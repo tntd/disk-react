@@ -1,6 +1,5 @@
 export const folderImages = {
 	full: require('./images/folder/folder-full.svg'),
-	hi: require('./images/folder/folder-empty.svg'),
 	empty: require('./images/folder/folder-empty.svg')
 };
 
@@ -30,4 +29,12 @@ export const linkImages = {
 export const actionIcon = {
 	setting: require('./images/icon/setting.svg'),
 	view: require('./images/icon/view.svg')
+};
+
+export const supportMap = () => {
+	return {
+		folder: Object.keys(folderImages),
+		file: Object.keys(fileImages),
+		link: Object.keys(linkImages)
+	};
 };

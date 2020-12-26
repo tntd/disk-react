@@ -3,7 +3,7 @@ import Disk from '../lib';
 import { Icon, message } from 'antd';
 import 'antd/dist/antd.css';
 
-const { Item } = Disk;
+const { Item, supportMap } = Disk;
 
 const list = [
 	{
@@ -98,7 +98,7 @@ const list = [
 ];
 
 export default props => {
-
+	console.log('supportMap', supportMap);
 	return (
 		<Disk>
 			{
