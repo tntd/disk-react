@@ -24,6 +24,7 @@
   ],
   "dependencies": {
     "@babel/core": "^7.10.2",
+    "@tntd/react-click-outside": "^1.1.2",
     "@tntd/utils": "^0.1.4",
     "antd": "^3.26.17",
     "autoprefixer": "7.1.6",

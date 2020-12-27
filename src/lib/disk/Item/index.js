@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { folderImages, fileImages, actionIcon, linkImages } from '../constant';
+import { DiskConsumer } from '../context';
 
 export default props => {
+	const { setContextMenuInfo } = useContext(DiskConsumer);
 	const {
 		empty = false,
 		type = 'folder',
@@ -11,6 +13,8 @@ export default props => {
 		icon,
 		onPreview,
 		onSetting,
+		contextMenuList = [],
+		onContextMenuClick,
 		...rest
 	} = props;
 
@@ -23,10 +27,29 @@ export default props => {
 
 	console.log('props', props);
 
+	const showContextMenu = (e, item, index) => {
+		if (contextMenuList && contextMenuList.length > 0) {
+			e.preventDefault();
+			e.stopPropagation();
+			setContextMenuInfo({
+				visible: true,
+				left: e.clientX,
+				top: e.clientY,
+				targetItem: item,
+				contextMenuList: contextMenuList || [],
+				onContextMenuClick: onContextMenuClick
+			});
+		} else {
+			return;
+		}
+	};
+	// console.log('diskProps', diskProps);
+
 	return (
 		<div
 			className="tntd-disk-item"
 			{...rest}
+			onContextMenu={e => showContextMenu(e, {})}
 		>
 			<div className='actions'>
 				{

@@ -1,6 +1,7 @@
 import React from 'react';
 import Disk from '../lib';
 import { Icon, message } from 'antd';
+import { contextMenuList } from './constant';
 import 'antd/dist/antd.css';
 
 const { Item, supportMap } = Disk;
@@ -114,11 +115,10 @@ export default props => {
 							onSetting={() => {
 								message.info('你点击了设置');
 							}}
-							onContextMenu={(e) => {
-								e.preventDefault();
-								e.stopPropagation();
-								message.info('你点击了右键');
-								console.log('e', e);
+							contextMenuList={contextMenuList}
+							onContextMenuClick={(value) => {
+								message.info('你点击了右键' + value);
+								console.log('value', value);
 							}}
 						/>
 					);
