@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState, Fragment } from 'react';
-import { Divider, Select, message, Modal } from 'antd';
+import React, { useEffect, useRef, useState } from 'react';
+import { Divider } from 'antd';
 import cn from 'classnames';
 import './index.less';
 
@@ -29,7 +29,6 @@ export default props => {
 		}
 	}, [left, top, visible]);
 
-	console.log('props aaa', props);
 	return (
 		<div
 			className="disk-item-context-menu"
@@ -48,12 +47,12 @@ export default props => {
 									className={cn({ disabled: item.disabled })}
 									onClick={() => {
 										if (!item.disabled) {
-											onContextMenuClick(item.value);
+											onContextMenuClick(item.value, props);
 											onCancel();
 										};
 									}}
 								>
-									<i></i>
+									{item.icon || <i></i>}
 									<span>{item.label}</span>
 								</li>
 							);

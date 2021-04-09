@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React from 'react';
 import { folderImages, fileImages, actionIcon, linkImages } from '../constant';
-import { DiskConsumer } from '../context';
+import cn from 'classnames';
 
 export default props => {
-	const { setContextMenuInfo } = useContext(DiskConsumer);
 	const {
 		empty = false,
 		type = 'folder',
@@ -12,9 +11,12 @@ export default props => {
 		title = '标题',
 		icon,
 		onPreview,
-		onSetting,
 		contextMenuList = [],
 		onContextMenuClick,
+		currentItemIndex,
+		setCurrentItemIndex,
+		setContextMenuInfo,
+		itemKey,
 		...rest
 	} = props;
 
@@ -25,17 +27,16 @@ export default props => {
 		newSubType = subType || 'href';
 	}
 
-	console.log('props', props);
-
-	const showContextMenu = (e, item, index) => {
+	const showContextMenu = (e, item) => {
+		setCurrentItemIndex(item.itemKey);
 		if (contextMenuList && contextMenuList.length > 0) {
 			e.preventDefault();
 			e.stopPropagation();
 			setContextMenuInfo({
+				...item,
 				visible: true,
 				left: e.clientX,
 				top: e.clientY,
-				targetItem: item,
 				contextMenuList: contextMenuList || [],
 				onContextMenuClick: onContextMenuClick
 			});
@@ -43,13 +44,12 @@ export default props => {
 			return;
 		}
 	};
-	// console.log('diskProps', diskProps);
 
 	return (
 		<div
-			className="tntd-disk-item"
+			className={cn('tntd-disk-item', { on: itemKey && currentItemIndex === itemKey })}
 			{...rest}
-			onContextMenu={e => showContextMenu(e, {})}
+			onContextMenu={e => showContextMenu(e, props, {})}
 		>
 			<div className='actions'>
 				{
@@ -57,16 +57,23 @@ export default props => {
 					onPreview &&
 					<i
 						className='action-item'
-						onClick={onPreview}
+						onClick={() => {
+							onPreview(props);
+						}}
 					>
 						<img src={actionIcon.view} />
 					</i>
 				}
 				{
-					onSetting &&
+					contextMenuList &&
+					contextMenuList.length > 0 &&
 					<i
 						className='action-item'
-						onClick={onSetting}
+						onClick={(e) => {
+							if (contextMenuList.length) {
+								showContextMenu(e, props, {});
+							}
+						}}
 					>
 						<img src={actionIcon.setting} />
 					</i>

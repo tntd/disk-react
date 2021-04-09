@@ -26,9 +26,6 @@ export default props => {
 				onPreview={() => {
 					message.info('你点击了预览');
 				}}
-				onSetting={() => {
-					message.info('你点击了设置');
-				}}
 				onContextMenu={(e) => {
 					e.preventDefault();
 					e.stopPropagation();
