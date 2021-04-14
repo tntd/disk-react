@@ -18,7 +18,8 @@ export const contextMenuList = [
 	{
 		label: '删除',
 		value: 'delete',
-		icon: <Icon type='delete' />,
-		disabled: true
+		// icon: <Icon type='delete' />,
+		color: 'red'
+		// disabled: true
 	}
 ];

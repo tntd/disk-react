@@ -51,6 +51,7 @@ export default props => {
 											onCancel();
 										};
 									}}
+									style={{ color: item.color || 'inherit' }}
 								>
 									{item.icon || <i></i>}
 									<span>{item.label}</span>
