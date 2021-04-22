@@ -14,7 +14,7 @@ const defaultContextMenuInfo = {
 	onContextMenuClick: () => { }
 };
 const Disk = ({ children }) => {
-	const [currentItemIndex, setCurrentItemIndex] = useState(null);
+	const [currentItemKey, setCurrentItemIndex] = useState(null);
 	const [contextMenuInfo, setContextMenuInfo] = useState(defaultContextMenuInfo);
 
 	const closeContextMenu = () => {
@@ -22,26 +22,25 @@ const Disk = ({ children }) => {
 		setContextMenuInfo(defaultContextMenuInfo);
 	};
 
+	console.log('currentItemKey', currentItemKey);
+
 	return (
 		<div className="tntd-disk-wrap">
 			{
 				React.Children.map(children, child => {
 					return React.cloneElement(child, {
-						currentItemIndex,
+						currentItemKey,
 						setCurrentItemIndex,
 						setContextMenuInfo
 					});
 				})
 			}
-			{
-				contextMenuInfo.visible &&
-				<ClickOutside onClickOutside={closeContextMenu}>
-					<ItemContextMenu
-						{...contextMenuInfo}
-						onCancel={closeContextMenu}
-					/>
-				</ClickOutside>
-			}
+			<ClickOutside onClickOutside={closeContextMenu}>
+				<ItemContextMenu
+					{...contextMenuInfo}
+					onCancel={closeContextMenu}
+				/>
+			</ClickOutside>
 		</div>
 	);
 };

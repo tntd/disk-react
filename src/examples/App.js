@@ -122,15 +122,15 @@ export default props => {
 							itemKey={item.id}
 							{...item}
 							icon={item.icon ? item.icon : null}
-							onPreview={(evt) => {
+							onPreview={(info) => {
 								message.info('你点击了预览');
-								console.log('onPreview evt', evt);
+								console.log('onPreview info', info);
 							}}
 							contextMenuList={contextMenuList}
-							onContextMenuClick={(value, evt) => {
+							onContextMenuClick={(value, info) => {
 								message.info('你点击了右键' + value);
 								console.log('value', value);
-								console.log('value evt', evt);
+								console.log('value info', info);
 							}}
 						/>
 					);

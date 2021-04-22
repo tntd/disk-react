@@ -13,7 +13,7 @@ export default props => {
 		onPreview,
 		contextMenuList = [],
 		onContextMenuClick,
-		currentItemIndex,
+		currentItemKey,
 		setCurrentItemIndex,
 		setContextMenuInfo,
 		itemKey,
@@ -47,7 +47,7 @@ export default props => {
 
 	return (
 		<div
-			className={cn('tntd-disk-item', { on: itemKey && currentItemIndex === itemKey })}
+			className={cn('tntd-disk-item', { on: itemKey && currentItemKey === itemKey })}
 			{...rest}
 			onContextMenu={e => showContextMenu(e, props, {})}
 		>
