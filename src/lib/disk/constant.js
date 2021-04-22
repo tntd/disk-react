@@ -18,7 +18,9 @@ export const fileImages = {
 	ppt: require('./images/file/file-ppt.svg'),
 	pdf: require('./images/file/file-pdf.svg'),
 	excel: require('./images/file/file-excel.svg'),
-	disk: require('./images/file/file-disk.svg')
+	disk: require('./images/file/file-disk.svg'),
+	word: require('./images/file/file-word.svg'),
+	xmind: require('./images/file/file-xmind.svg')
 };
 
 export const linkImages = {
