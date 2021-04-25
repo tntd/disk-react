@@ -18,7 +18,8 @@ export default props => {
 		}
 
 		return {
-			left, top
+			left: left || '-9999px',
+			top: top || '-9999px'
 		};
 	});
 
