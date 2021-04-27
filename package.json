@@ -1,6 +1,6 @@
 {
   "name": "@tntd/disk-react",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "description": "一个小而美的资源浏览器组件",

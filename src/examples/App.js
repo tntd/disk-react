@@ -132,6 +132,9 @@ export default props => {
 								console.log('value', value);
 								console.log('value info', info);
 							}}
+							onClick={() => {
+								message.info('点击');
+							}}
 						/>
 					);
 				})

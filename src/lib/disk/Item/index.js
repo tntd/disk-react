@@ -57,7 +57,9 @@ export default props => {
 					onPreview &&
 					<i
 						className='action-item'
-						onClick={() => {
+						onClick={(e) => {
+							e.stopPropagation();
+							e.preventDefault();
 							onPreview(props);
 						}}
 					>
